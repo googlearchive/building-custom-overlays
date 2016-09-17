@@ -1,0 +1,28 @@
+{
+  "name": "building-custom-overlays",
+  "authors": [
+    "The Polymer authors"
+  ],
+  "description": "Challenges with focus wrapping and rendering on the top layer stacking context",
+  "main": "index.html",
+  "keywords": [
+    "codelab",
+    "a11y",
+    "overlays",
+    "focus wrapping",
+    "stacking context"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "blockingElements": "PolymerLabs/blockingElements",
+    "inert": "WICG/inert",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#v1",
+    "polymer": "polymer/polymer#2.0-preview",
+    "iron-overlay": "polymerlabs/iron-overlay#use-2.0"
+  }
+}

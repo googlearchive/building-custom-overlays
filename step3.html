@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Overlays</title>
+  <link rel="stylesheet" href="list.css">
+  <style>
+    .custom-dialog {
+      /* invisible by default */
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .custom-dialog[opened] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content-wrapper {
+      border: 3px solid black;
+      padding: 16px;
+      background-color: white;
+      /* backdrop */
+      outline: 9999px solid rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul>
+    <dialog id="dialog">
+      <h2>dialog</h2>
+      <p>Oh, hi!</p>
+      <button onclick="dialog.close()">Close</button>
+    </dialog>
+
+    <div id="myDialog" class="custom-dialog">
+      <div class="content-wrapper">
+        <h2>dialog</h2>
+        <p>Oh, hi!</p>
+        <button onclick="myDialog.close()">Close</button>
+      </div>
+    </div>
+
+    <li>
+      Item 1
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.showModal()">Open my dialog</button>
+      </div>
+    </li>
+    <li>
+      Item 2
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.showModal()">Open my dialog</button>
+      </div>
+    </li>
+    <li>
+      Item 3
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.showModal()">Open my dialog</button>
+      </div>
+    </li>
+    <li>
+      Item 4
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.showModal()">Open my dialog</button>
+      </div>
+    </li>
+  </ul>
+
+  <script>
+    myDialog.showModal = function() {
+      this.setAttribute('opened', '');
+    };
+
+    myDialog.close = function() {
+      this.removeAttribute('opened');
+    };
+  </script>
+
+</body>
+
+</html>

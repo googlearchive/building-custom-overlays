@@ -1,0 +1,47 @@
+/*
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+ul {
+  border: 2px solid gray;
+  padding: 0;
+  height: 40vh;
+  overflow: auto;
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-duration: .8s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: none;
+    background-color: white;
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.99);
+    background-color: #ddd;
+    opacity: .5;
+  }
+}
+li {
+  padding: 8vh 10px;
+}
+
+li:nth-of-type(2n) {
+  background-color: #ddd;
+}
+
+li .buttons {
+  float: right;
+}

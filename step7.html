@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Overlays</title>
+  <script src="bower_components/blockingElements/blocking-elements.js"></script>
+  <script src="bower_components/inert/inert.js"></script>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="bower_components/iron-overlay/iron-overlay.html">
+  <link rel="stylesheet" href="list.css">
+  <style>
+    .content-wrapper {
+      border: 3px solid black;
+      padding: 16px;
+      background-color: white;
+      /* backdrop */
+      outline: 9999px solid rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul class="pulse">
+    <dialog id="dialog">
+      <h2>dialog</h2>
+      <p>Oh, hi!</p>
+      <button onclick="dialog.close()">Close</button>
+    </dialog>
+
+    <iron-overlay id="myDialog">
+      <template>
+        <div class="content-wrapper">
+          <h2>dialog</h2>
+          <p>Oh, hi!</p>
+          <button autofocus onclick="myDialog.close()">Close</button>
+          <button onclick="myDialog2.open()">open second dialog</button>
+        </div>
+      </template>
+    </iron-overlay>
+
+    <iron-overlay id="myDialog2">
+      <template>
+        <div class="content-wrapper">
+          <h2>dialog 2</h2>
+          <button autofocus onclick="myDialog2.close()">Close</button>
+        </div>
+      </template>
+    </iron-overlay>
+
+    <li>
+      Item 1
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.open()">Open my dialog</button>
+      </div>
+    </li>
+    <li>
+      Item 2
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.open()">Open my dialog</button>
+      </div>
+    </li>
+    <li>
+      Item 3
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.open()">Open my dialog</button>
+      </div>
+    </li>
+    <li>
+      Item 4
+      <div class="buttons">
+        <button onclick="dialog.showModal()">Open dialog</button>
+        <button onclick="myDialog.open()">Open my dialog</button>
+      </div>
+    </li>
+  </ul>
+
+  <script>
+    document.addEventListener('iron-overlay-attach', function(event) {
+      var overlay = event.target;
+      overlay.renderer.setAttribute('role', 'dialog');
+    });
+
+    document.addEventListener('iron-overlay-opened', function(event) {
+      var overlay = event.target;
+      document.$blockingElements.push(overlay.renderer);
+    });
+
+    document.addEventListener('iron-overlay-closed', function(event) {
+      var overlay = event.target;
+      document.$blockingElements.remove(overlay.renderer);
+      overlay.applyFocus();
+    });
+  </script>
+</body>
+
+</html>
