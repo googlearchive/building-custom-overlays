@@ -19,10 +19,9 @@
   ],
   "license": "http://polymer.github.io/LICENSE.txt",
   "dependencies": {
-    "blockingElements": "PolymerLabs/blockingElements",
-    "inert": "WICG/inert",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#v1",
-    "polymer": "polymer/polymer#2.0-preview",
-    "iron-overlay": "polymerlabs/iron-overlay#use-2.0"
+    "blockingElements": "PolymerLabs/blockingElements#master",
+    "inert": "WICG/inert#^1",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.4",
+    "iron-overlay": "polymerLabs/iron-overlay#use-2.0"
   }
 }
